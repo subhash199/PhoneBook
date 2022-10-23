@@ -1,0 +1,43 @@
+﻿<Window x:Class="PhoneBook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhoneBook"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="375">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Label Content="Phone Book App" Margin="0,0,0,0"  FontSize="16"/>
+            </StackPanel>
+            <DockPanel>
+                <Label Content="Contacts" FontSize="16" HorizontalAlignment="Left" ></Label>
+                <Button Content=" + Add Contact" FontSize="16" Click="AddContactClick" Background="DeepSkyBlue" Margin="0,0,0,0" HorizontalAlignment="right"/>
+            </DockPanel>
+            <DockPanel Margin="0,10,0,0">
+                <Label Content="Search" FontSize="16"></Label>
+                <TextBox Height="23" x:Name="Search_Box" TextChanged="Search_Box_TextChanged" TextWrapping="Wrap" Text=""/>
+            </DockPanel>
+            <ListView x:Name="Contact_Box" Height="auto" FontSize="16" Foreground="Black">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="First Name" Width="90" x:Name="fname" DisplayMemberBinding="{Binding firstName}" />
+                        <GridViewColumn Header="Last Name" Width="90" x:Name="lname" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Number" Width="90" x:Name="number" DisplayMemberBinding="{Binding number}" />
+                        <GridViewColumn Header="Edit" Width="90">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button CommandParameter="{Binding}" Content="Edit" Width="90" Click="Edit_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                   
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
